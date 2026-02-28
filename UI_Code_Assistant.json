@@ -1,0 +1,376 @@
+{
+  "id": "bc21f7c2-56ab-45c3-b4e6-36bf3f72a4ea",
+  "version": "2.0",
+  "name": "UI Code Assistant",
+  "url": "https://mason.gmu.edu",
+  "tests": [{
+    "id": "e94f09c0-1880-40f0-ac73-4bab091f3d9e",
+    "name": "Test 1",
+    "commands": [{
+      "id": "9004c3f6-aeea-4201-b216-6b6f33def8d8",
+      "comment": "",
+      "command": "open",
+      "target": "/~smysorep/index.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f1f1b4d6-2380-404b-b535-a4f6b439c0ae",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1430x809",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2e4ebe0c-3302-41e5-a781-3234014eec53",
+      "comment": "",
+      "command": "click",
+      "target": "id=email",
+      "targets": [
+        ["id=email", "id"],
+        ["css=#email", "css:finder"],
+        ["xpath=//input[@id='email']", "xpath:attributes"],
+        ["xpath=//form[@id='loginForm']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "5dcaefaa-1f5a-495b-9af5-0aba19fdee8e",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//form[@id='loginForm']/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ca9fdb3b-7dab-439a-870a-4b64e3973cea",
+      "comment": "",
+      "command": "click",
+      "target": "id=showPassword",
+      "targets": [
+        ["id=showPassword", "id"],
+        ["css=#showPassword", "css:finder"],
+        ["xpath=//input[@id='showPassword']", "xpath:attributes"],
+        ["xpath=//form[@id='loginForm']/div[4]/input", "xpath:idRelative"],
+        ["xpath=//div[4]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8791fb00-e63b-424d-8dc8-1442ad5813f7",
+      "comment": "",
+      "command": "click",
+      "target": "id=remember",
+      "targets": [
+        ["id=remember", "id"],
+        ["css=#remember", "css:finder"],
+        ["xpath=//input[@id='remember']", "xpath:attributes"],
+        ["xpath=//form[@id='loginForm']/div[5]/input", "xpath:idRelative"],
+        ["xpath=//div[5]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8eb64aba-87b1-4009-aa05-edd2b46e1a0a",
+      "comment": "",
+      "command": "click",
+      "target": "css=.login-btn",
+      "targets": [
+        ["css=.login-btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//form[@id='loginForm']/button", "xpath:idRelative"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "033eb71e-87ce-4c34-8de9-e41d173d5ba9",
+      "comment": "",
+      "command": "select",
+      "target": "id=functionalitySelect",
+      "targets": [],
+      "value": "label=Analyze UI Design"
+    }, {
+      "id": "9f7941aa-6a3f-46dd-a7f7-a8eeb6b4f13c",
+      "comment": "",
+      "command": "click",
+      "target": "css=#functionalitySelect > option:nth-child(2)",
+      "targets": [
+        ["css=#functionalitySelect > option:nth-child(2)", "css:finder"],
+        ["xpath=//option[@value='design']", "xpath:attributes"],
+        ["xpath=//select[@id='functionalitySelect']/option[2]", "xpath:idRelative"],
+        ["xpath=//option[2]", "xpath:position"],
+        ["xpath=//option[contains(.,'Analyze UI Design')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "11588a8d-bc0e-41cd-b38d-3f6493843d4d",
+      "comment": "",
+      "command": "select",
+      "target": "id=functionalitySelect",
+      "targets": [],
+      "value": "label=Generate Components"
+    }, {
+      "id": "54de9358-582c-4436-b754-e36639754f6f",
+      "comment": "",
+      "command": "click",
+      "target": "css=#functionalitySelect > option:nth-child(1)",
+      "targets": [
+        ["css=#functionalitySelect > option:nth-child(1)", "css:finder"],
+        ["xpath=//option[@value='components']", "xpath:attributes"],
+        ["xpath=//select[@id='functionalitySelect']/option", "xpath:idRelative"],
+        ["xpath=//option", "xpath:position"],
+        ["xpath=//option[contains(.,'Generate Components')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "739aaad5-29ec-4eae-81b7-d1a3c3b73e74",
+      "comment": "",
+      "command": "select",
+      "target": "id=componentSelect",
+      "targets": [],
+      "value": "label=Shopping Cart"
+    }, {
+      "id": "995c088b-cdc1-4cd6-981f-2c28e296cdc3",
+      "comment": "",
+      "command": "click",
+      "target": "css=#componentSelect > option:nth-child(4)",
+      "targets": [
+        ["css=#componentSelect > option:nth-child(4)", "css:finder"],
+        ["xpath=//option[@value='cart']", "xpath:attributes"],
+        ["xpath=//select[@id='componentSelect']/option[4]", "xpath:idRelative"],
+        ["xpath=//div[2]/select/option[4]", "xpath:position"],
+        ["xpath=//option[contains(.,'Shopping Cart')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6063a9d0-f575-4b32-9288-0c25279a3fe4",
+      "comment": "",
+      "command": "click",
+      "target": "id=generateBtn",
+      "targets": [
+        ["id=generateBtn", "id"],
+        ["css=#generateBtn", "css:finder"],
+        ["xpath=//button[@id='generateBtn']", "xpath:attributes"],
+        ["xpath=//div[@id='componentSection']/button", "xpath:idRelative"],
+        ["xpath=//div[3]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Generate Code')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "1aebb88c-2134-4760-b5fd-20811edc82d6",
+      "comment": "",
+      "command": "click",
+      "target": "id=codeOutput",
+      "targets": [
+        ["id=codeOutput", "id"],
+        ["css=#codeOutput", "css:finder"],
+        ["xpath=//textarea[@id='codeOutput']", "xpath:attributes"],
+        ["xpath=//div[@id='componentSection']/div[2]/div/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b0a48176-8e93-42a1-9357-112bf22b4709",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Live Syntax",
+      "targets": [
+        ["linkText=Live Syntax", "linkText"],
+        ["css=li:nth-child(2) > .active", "css:finder"],
+        ["xpath=//a[contains(text(),'Live Syntax')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'syntax.html')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Live Syntax')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "9b2b5dc4-ab52-4a61-b825-29b5edf2834c",
+      "comment": "",
+      "command": "click",
+      "target": "id=codeInput",
+      "targets": [
+        ["id=codeInput", "id"],
+        ["css=#codeInput", "css:finder"],
+        ["xpath=//textarea[@id='codeInput']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "814c21b3-9b2a-47af-a8e8-c66c8766714e",
+      "comment": "",
+      "command": "type",
+      "target": "id=codeInput",
+      "targets": [
+        ["id=codeInput", "id"],
+        ["css=#codeInput", "css:finder"],
+        ["xpath=//textarea[@id='codeInput']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "<div class=\"card\">\\n        <div class=\"card-header\">Shopping Cart</div>\\n        <ul class=\"list-group list-group-flush\">\\n          <li class=\"list-group-item\">Product 1 - $10</li>\\n          <li class=\"list-group-item\">Product 2 - $20</li>\\n          <li class=\"list-group-item\">Product 3 - $15</li>\\n        </ul>\\n        <div class=\"card-footer text-end\">\\n          <strong>Total: $45</strong>\\n        </div>\\n      </div>"
+    }, {
+      "id": "5689e0bd-7c23-45a2-966e-02a958a1c328",
+      "comment": "",
+      "command": "click",
+      "target": "id=checkSyntaxBtn",
+      "targets": [
+        ["id=checkSyntaxBtn", "id"],
+        ["css=#checkSyntaxBtn", "css:finder"],
+        ["xpath=//button[@id='checkSyntaxBtn']", "xpath:attributes"],
+        ["xpath=//main/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Check Syntax')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "894ccc85-f7de-48fe-8235-925d66b18f47",
+      "comment": "",
+      "command": "click",
+      "target": "css=.main-header-wrapper",
+      "targets": [
+        ["css=.main-header-wrapper", "css:finder"],
+        ["xpath=//header", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "53e3bd2c-a10f-41b7-996e-928566e37fe4",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Code Beautifier",
+      "targets": [
+        ["linkText=Code Beautifier", "linkText"],
+        ["css=li:nth-child(3) > .active", "css:finder"],
+        ["xpath=//a[contains(text(),'Code Beautifier')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'beautify.html')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Code Beautifier')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "a2be69b9-0234-49ca-aea5-477e2fe53aa9",
+      "comment": "",
+      "command": "click",
+      "target": "id=beautifyInput",
+      "targets": [
+        ["id=beautifyInput", "id"],
+        ["css=#beautifyInput", "css:finder"],
+        ["xpath=//textarea[@id='beautifyInput']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "09e7cd4d-e7cc-479c-a27b-2c3c328f1b48",
+      "comment": "",
+      "command": "type",
+      "target": "id=beautifyInput",
+      "targets": [
+        ["id=beautifyInput", "id"],
+        ["css=#beautifyInput", "css:finder"],
+        ["xpath=//textarea[@id='beautifyInput']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "<div class=\"card\">\\n        <div class=\"card-header\">Shopping Cart</div>\\n        <ul class=\"list-group list-group-flush\">\\n          <li class=\"list-group-item\">Product 1 - $10</li>\\n          <li class=\"list-group-item\">Product 2 - $20</li>\\n          <li class=\"list-group-item\">Product 3 - $15</li>\\n        </ul>\\n        <div class=\"card-footer text-end\">\\n          <strong>Total: $45</strong>\\n        </div>\\n      </div>"
+    }, {
+      "id": "935bcfdd-25a3-4959-9ed6-ba404c5b818e",
+      "comment": "",
+      "command": "click",
+      "target": "id=beautifyBtn",
+      "targets": [
+        ["id=beautifyBtn", "id"],
+        ["css=#beautifyBtn", "css:finder"],
+        ["xpath=//button[@id='beautifyBtn']", "xpath:attributes"],
+        ["xpath=//div/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Beautify Code')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "7b1f2580-6456-4d1e-91c9-7a55cb8ecb9c",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=suggestion Engine",
+      "targets": [
+        ["linkText=suggestion Engine", "linkText"],
+        ["css=li:nth-child(4) > .active", "css:finder"],
+        ["xpath=//a[contains(text(),'suggestion Engine')]", "xpath:link"],
+        ["xpath=//a[contains(@href, 'suggestion.html')]", "xpath:href"],
+        ["xpath=//li[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'suggestion Engine')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "5222e5e2-07e2-4562-8dc5-7d7eadc3e792",
+      "comment": "",
+      "command": "click",
+      "target": "id=codeOutput",
+      "targets": [
+        ["id=codeOutput", "id"],
+        ["css=#codeOutput", "css:finder"],
+        ["xpath=//textarea[@id='codeOutput']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "62967e4b-1dc8-432b-90e7-a7d7f3717f66",
+      "comment": "",
+      "command": "type",
+      "target": "id=codeOutput",
+      "targets": [
+        ["id=codeOutput", "id"],
+        ["css=#codeOutput", "css:finder"],
+        ["xpath=//textarea[@id='codeOutput']", "xpath:attributes"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "<div class=\"card\">\\n        <div class=\"card-header\">Shopping Cart</div>\\n        <ul class=\"list-group list-group-flush\">\\n          <li class=\"list-group-item\">Product 1 - $10</li>\\n          <li class=\"list-group-item\">Product 2 - $20</li>\\n          <li class=\"list-group-item\">Product 3 - $15</li>\\n        </ul>\\n        <div class=\"card-footer text-end\">\\n          <strong>Total: $45</strong>\\n        </div>\\n      </div>"
+    }, {
+      "id": "98546b44-d32d-4714-b422-24559e77bb98",
+      "comment": "",
+      "command": "click",
+      "target": "id=aiSuggestBtn",
+      "targets": [
+        ["id=aiSuggestBtn", "id"],
+        ["css=#aiSuggestBtn", "css:finder"],
+        ["xpath=//button[@id='aiSuggestBtn']", "xpath:attributes"],
+        ["xpath=//div/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Get Suggestions')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e19708e2-4d2b-4b85-8a6b-454048bc1349",
+      "comment": "",
+      "command": "mouseOver",
+      "target": "id=aiSuggestBtn",
+      "targets": [
+        ["id=aiSuggestBtn", "id"],
+        ["css=#aiSuggestBtn", "css:finder"],
+        ["xpath=//button[@id='aiSuggestBtn']", "xpath:attributes"],
+        ["xpath=//div/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Get Suggestions')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "dc2c1d3d-dce1-436e-94c1-ea1ffce0d6df",
+      "comment": "",
+      "command": "mouseOut",
+      "target": "id=aiSuggestBtn",
+      "targets": [
+        ["id=aiSuggestBtn", "id"],
+        ["css=#aiSuggestBtn", "css:finder"],
+        ["xpath=//button[@id='aiSuggestBtn']", "xpath:attributes"],
+        ["xpath=//div/div/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Get Suggestions')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "00d4a125-38c9-4879-8231-1264a7a19d4d",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["e94f09c0-1880-40f0-ac73-4bab091f3d9e"]
+  }],
+  "urls": ["https://mason.gmu.edu/"],
+  "plugins": []
+}

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      padding: 20px;
+      background: linear-gradient(to right, #f0f2f5, #e6ecf0);
+      background-color: #8bbaea;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .dashboard-container {
+      background-color: #aae6f7;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .main-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .main-header-wrapper {
+      background-color: #1a5370; /* soft blue */
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      border-radius: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    } 
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .main-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 15px;
+    }
+
+    .main-nav a {
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    .user-menu {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .user-avatar {
+      background-color: #007bff;
+      color: white;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .form-label {
+      font-weight: 500;
+    }
+
+    #preview {
+      border: 1px solid #dee2e6;
+      min-height: 200px;
+      padding: 15px;
+      margin-top: 15px;
+      background-color: #ffffff;
+      border-radius: 8px;
+    }
+
+    textarea {
+      resize: vertical;
+      font-family: monospace;
+      font-size: 0.9rem;
+      background-color: #f1f3f5;
+      border-radius: 6px;
+      border: 1px solid #ced4da;
+    }
+
+    h1, h4 {
+      color: #343a40;
+    }
+
+    #aiSuggestions li {
+    font-size: 0.95rem;
+  }
+
+  </style>
+</head>
+<body>
+  <div class="dashboard-container">
+    <header class="main-header-wrapper container d-flex justify-content-between align-items-center py-3"">
+      <div class="logo fs-2 fw-bold">UI Code Assistant</div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="user.html" class="active">Dashboard</a></li>
+          <li><a href="syntax.html" class="active">Live Syntax</a></li>
+          <li><a href="beautify.html" class="active">Code Beautifier</a></li>
+          <li><a href="#" class="active">suggestion Engine</a></li>
+        </ul>
+      </nav>
+      <div class="user-menu">
+        <div class="user-profile">
+          <span class="user-avatar">U</span>
+        </div>
+        <button id="logoutBtn" class="btn btn-outline-secondary btn-sm">Logout</button>
+      </div>
+    </header>
+
+    <main class="dashboard-content">
+        <div class="welcome-section mb-4">
+            <h1>AI Suggestion Engine</h1>
+            <label for="codeOutput" class="form-label mt-3">Paste or type your code here:</label>
+            <textarea id="codeOutput" class="form-control mb-3" rows="8" placeholder="Paste HTML, CSS or JS code here..."></textarea>
+
+            <div class="mt-4">
+                <button id="aiSuggestBtn" class="btn btn-outline-info mb-2">Get Suggestions</button>
+                <ul id="aiSuggestions" class="list-group"></ul>
+            </div>
+        </div>
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/js-beautify@1.14.7/js/lib/beautify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-beautify@1.14.7/js/lib/beautify-html.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-beautify@1.14.7/js/lib/beautify-css.min.js"></script>
+
+    <script>
+        document.getElementById('aiSuggestBtn').addEventListener('click', function () {
+        const code = document.getElementById('codeOutput').value.trim();
+        const suggestions = [];
+
+        if (!code) {
+            suggestions.push("⚠️ No code found. Please generate or paste your code.");
+        }
+
+        // Basic HTML tips
+        if (code.includes('<div') && !code.includes('class')) {
+            suggestions.push("💡 Consider using classes for divs to improve styling and layout control.");
+        }
+        if (code.includes('<br>')) {
+            suggestions.push("⚠️ Avoid using <br> for spacing. Use margins or padding via CSS instead.");
+        }
+        if (code.includes('style=')) {
+            suggestions.push("💡 Try using external CSS classes instead of inline styles for maintainability.");
+        }
+
+        // Accessibility
+        if (code.includes('<img') && !code.includes('alt=')) {
+            suggestions.push("⚠️ Add alt text to images for accessibility.");
+        }
+        if (code.includes('<button') && !code.includes('type=')) {
+            suggestions.push("⚠️ Specify button type (e.g., type='button' or 'submit') to avoid unexpected behavior.");
+        }
+
+        // JS check
+        if (code.includes('var ')) {
+            suggestions.push("🔁 Use let/const instead of var for better scoping and modern JS practices.");
+        }
+
+        // Populate Suggestions List
+        const list = document.getElementById('aiSuggestions');
+        list.innerHTML = '';
+        suggestions.forEach(suggestion => {
+            const li = document.createElement('li');
+            li.className = 'list-group-item';
+            li.textContent = suggestion;
+            list.appendChild(li);
+        });
+
+        if (suggestions.length === 0) {
+            const li = document.createElement('li');
+            li.className = 'list-group-item text-success';
+            li.textContent = '✅ Great job! Your code looks clean and well-structured.';
+            list.appendChild(li);
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const logoutBtn = document.getElementById('logoutBtn');
+        const codeInput = document.getElementById('codeInput');
+        const feedback = document.getElementById('liveSyntaxFeedback');
+        const checkSyntaxBtn = document.getElementById('checkSyntaxBtn');
+    
+        logoutBtn.addEventListener('click', () => {
+            alert('You have been logged out.');
+            window.location.href = 'index.html'; 
+        });
+    });
+
+    </script>
+  </body>
+  </html>
+  

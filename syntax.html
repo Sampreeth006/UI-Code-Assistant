@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      padding: 20px;
+      background: linear-gradient(to right, #f0f2f5, #e6ecf0);
+      background-color: #8bbaea;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .dashboard-container {
+      background-color: #aae6f7;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .main-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .main-header-wrapper {
+      background-color: #1a5370; /* soft blue */
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      border-radius: 8px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    } 
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .main-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 15px;
+    }
+
+    .main-nav a {
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    .user-menu {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .user-avatar {
+      background-color: #007bff;
+      color: white;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .form-label {
+      font-weight: 500;
+    }
+
+    #preview {
+      border: 1px solid #dee2e6;
+      min-height: 200px;
+      padding: 15px;
+      margin-top: 15px;
+      background-color: #ffffff;
+      border-radius: 8px;
+    }
+
+    textarea {
+      resize: vertical;
+      font-family: monospace;
+      font-size: 0.9rem;
+      background-color: #f1f3f5;
+      border-radius: 6px;
+      border: 1px solid #ced4da;
+    }
+
+    h1, h4 {
+      color: #343a40;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard-container">
+    <header class="main-header-wrapper container d-flex justify-content-between align-items-center py-3"">
+      <div class="logo fs-2 fw-bold">UI Code Assistant</div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="user.html" class="active">Dashboard</a></li>
+          <li><a href="#" class="active">Live Syntax</a></li>
+          <li><a href="beautify.html" class="active">Code Beautifier</a></li>
+          <li><a href="suggestion.html" class="active">suggestion Engine</a></li>
+        </ul>
+      </nav>
+      <div class="user-menu">
+        <div class="user-profile">
+          <span class="user-avatar">U</span>
+        </div>
+        <button id="logoutBtn" class="btn btn-outline-secondary btn-sm">Logout</button>
+      </div>
+    </header>
+
+    <main class="dashboard-content">
+      <div class="welcome-section mb-4">
+        <h1>Live Syntax Testing</h1>
+      </div>
+      <textarea id="codeInput" class="form-control mb-3" rows="10" placeholder="Paste your Code here..."></textarea>
+      <button id="checkSyntaxBtn" class="btn btn-primary mb-3">Check Syntax</button>
+      <div id="liveSyntaxFeedback" class="text-muted mt-2">Waiting for input...</div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const logoutBtn = document.getElementById('logoutBtn');
+          const codeInput = document.getElementById('codeInput');
+          const feedback = document.getElementById('liveSyntaxFeedback');
+          const checkSyntaxBtn = document.getElementById('checkSyntaxBtn');
+      
+          logoutBtn.addEventListener('click', () => {
+            alert('You have been logged out.');
+            window.location.href = 'index.html'; 
+          });
+      
+          checkSyntaxBtn.addEventListener('click', () => {
+            const code = codeInput.value.trim();
+            if (!code) {
+              feedback.textContent = "Waiting for input...";
+              return;
+            }
+      
+            if (code.startsWith("<")) {
+                const parser = new DOMParser();
+                const parsed = parser.parseFromString(code, "text/html");
+                const errors = parsed.querySelector("parsererror");
+
+            if (errors) {
+                feedback.textContent = "❌ HTML has syntax issues.";
+            } else {
+            let msg = "✅ HTML looks valid.";
+                if (!code.includes("<!DOCTYPE html>")) msg += " ℹ️ Consider adding <!DOCTYPE html>.";
+                if (!code.includes("<title>")) msg += " ℹ️ Add a <title> tag for SEO.";
+                if (code.includes("<b>")) msg += " ⚠️ Avoid using <b>. Prefer <strong> for accessibility.";
+                if (code.includes("<i>")) msg += " ⚠️ Use <em> instead of <i> for emphasis.";
+                feedback.textContent = msg;
+            }
+
+            } else if (code.includes("{") && code.includes(";")) {
+            const hasUnclosed = code.split("{").length !== code.split("}").length;
+
+        if (hasUnclosed) {
+            feedback.textContent = "❌ CSS seems to have unclosed braces.";
+        } else {
+            let msg = "✅ CSS structure looks okay.";
+            if (code.includes("!important")) msg += " ⚠️ Try to avoid !important unless necessary.";
+            if (code.includes("* {")) msg += " ⚠️ Using the universal selector (*) can be risky for performance.";
+            if (code.includes("px") && code.includes("rem")) msg += " 🔁 Consider using consistent units like rem/em.";
+                feedback.textContent = msg;
+        }
+
+        } else if (code.includes("function") || code.includes("=")) {
+    try {
+        new Function(code); // basic syntax validation
+        let msg = "✅ JavaScript syntax is valid.";
+            if (code.includes("var ")) msg += " ⚠️ Prefer let or const instead of var.";
+            if (code.includes("==") && !code.includes("===")) msg += " ⚠️ Use === instead of == for strict equality.";
+            if (!code.includes("console.log") && code.includes("debugger")) msg += " 🔍 Use console.log for lightweight debugging.";
+                feedback.textContent = msg;
+            } catch (e) {
+            feedback.textContent = "❌ JavaScript Error: " + e.message;
+        }
+
+    } else {
+        feedback.textContent = "ℹ️ Code detected but unsure of type.";
+    }
+
+      });
+    });
+
+      </script>  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+  </html>
+  
